@@ -82,11 +82,16 @@ void inputPlayer(Player *p){
         cin >> p->minutes[k];
     }
     cin.ignore();
+    cout << "\n";
 
 }
 
 void displayPlayer(Player *p){
-    cout << p->name << " Jersey# " << p->jerseyNumber << " Position: "<< p->position<< endl;
+    cout << "----------------------------------------\n";
+    cout << "Name:      " << p->name << "\n";
+    cout << "Position:  " << p->position << "\n";
+    cout << "Jersey #:  " << p->jerseyNumber << "\n";
+    cout << "Games:     " << p->games << "\n";
     cout << "Games: " << p->games << "\n Minutes in game: ";
     for (int k =0; k < p->games; k++){
         cout << " " << p->minutes[k];
@@ -94,4 +99,5 @@ void displayPlayer(Player *p){
             cout << " ";
         }
     }
+    cout << "\n";
 }
