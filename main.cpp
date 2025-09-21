@@ -28,5 +28,23 @@ struct Team
 
 };
 
+void inputPlayer(Player *p);
+void displayPlayer(Player *p);
 
+int main(){
+Team teamNum;
+
+cout<< "How many players? ";
+cin>>teamNum.count;
+cin.ignore();
+
+if (teamNum.count > 0){
+    teamNum.roster = new Player[teamNum.count];
+    
+}else{
+    teamNum.roster = nullptr;
+}
+
+
+}
 
