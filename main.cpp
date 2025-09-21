@@ -44,6 +44,17 @@ if (teamNum.count > 0){
     teamNum.roster = nullptr;
 }
 
+for (int i = 0; i < teamNum.count; i++){
+    cout << "Player #" << i+1 << endl;
+    inputPlayer(&teamNum.roster[i]);
+}
+for (int i = 0; i < teamNum.count; i++){
+    cout << "Player #" << i+1 << endl;
+    displayPlayer(&teamNum.roster[i]);
+    cout<< endl;
+}
+
+return 0;
 
 }
 
@@ -75,9 +86,12 @@ void inputPlayer(Player *p){
 }
 
 void displayPlayer(Player *p){
-    cout << p->name << " #" << p->jerseyNumber << " Position: "<< p->position<< endl;
+    cout << p->name << " Jersey# " << p->jerseyNumber << " Position: "<< p->position<< endl;
     cout << "Games: " << p->games << "\n Minutes in game: ";
     for (int k =0; k < p->games; k++){
-        cout << p->minutes[k] << 
+        cout << " " << p->minutes[k];
+        if (k+1 != p->games){
+            cout << " ";
+        }
     }
 }
