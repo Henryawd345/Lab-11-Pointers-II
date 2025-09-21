@@ -9,7 +9,7 @@ struct Player{
     int jerseyNumber;
 
     int* minutes = nullptr; //inner dynamic array: this will be the minutes played per game
-    int games = 0; // how many games
+    int games = 0; // how many games(thisis the size of minutes[])
 
     ~Player(){
         delete[] minutes;
@@ -17,10 +17,10 @@ struct Player{
 
 };
 
-struct Team
-{
+//The roster of the team
+struct Team{
     Player *roster = nullptr; //Outer dynamic array: player in the team
-    int count = 0;
+    int count = 0; //number of player
 
     ~Team(){
         delete[] roster;
@@ -38,16 +38,19 @@ cout<< "How many players? ";
 cin>>teamNum.count;
 cin.ignore();
 
+//Allocate the roster if there is at least 1 player
 if (teamNum.count > 0){
     teamNum.roster = new Player[teamNum.count];
 }else{
     teamNum.roster = nullptr;
 }
 
+//Fill each player information
 for (int i = 0; i < teamNum.count; i++){
     cout << "Player #" << i+1 << endl;
     inputPlayer(&teamNum.roster[i]);
 }
+//Show the summary of a player
 for (int i = 0; i < teamNum.count; i++){
     cout << "Player #" << i+1 << endl;
     displayPlayer(&teamNum.roster[i]);
@@ -69,8 +72,9 @@ void inputPlayer(Player *p){
     cin>>p->jerseyNumber;
 
     cout<< "Game played; ";
-    cin>>p->games;
+    cin>>p->games;// This decide the Inner array size for this player 
 
+    //Allocate the minutes if they played at least 1 match
     if (p->games > 0){
         p->minutes = new int [p->games];
     }else{
@@ -92,7 +96,7 @@ void displayPlayer(Player *p){
     cout << "Position:  " << p->position << "\n";
     cout << "Jersey #:  " << p->jerseyNumber << "\n";
     cout << "Games:     " << p->games << "\n";
-    cout << "Games: " << p->games << "\n Minutes in game: ";
+    cout << "Games:     " << p->games << "\nMinutes in game: ";
     for (int k =0; k < p->games; k++){
         cout << " " << p->minutes[k];
         if (k+1 != p->games){
